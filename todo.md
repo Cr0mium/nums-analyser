@@ -7,8 +7,8 @@
 
 ## 📊 Metrics (MVP)
 - [x] Basic Stats
-- [ ] Correlations
-- [ ] Trends (if time column)
+- [x] Correlations
+- [x] Trends (if time column)
 
 ## ⚙️ Improvements
 - [ ] Clean output format
