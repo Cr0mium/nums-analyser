@@ -11,9 +11,13 @@
 - [x] Trends (if time column)
 
 ## ⚙️ Improvements
-- [ ] Clean output format
-- [ ] Filter weak correlations
+- [x] Clean output format
+- [x] Filter weak 
 
+## anomalies
+- [x] Implement anomalies.py
+- [x] zscore
+- [x] direction- above mean/below mean
 ## 🧪 Testing
 - [ ] Test on personal dataset
 - [ ] Test on random CSV
