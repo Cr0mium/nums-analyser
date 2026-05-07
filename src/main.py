@@ -1,22 +1,31 @@
 # src/main.py
 
-from src.core.loader import load_csv
+import os
+import json
+import pandas as pd
+
+from dotenv import load_dotenv
+
 from src.core.detector import detect_schema
 from src.engine.metrics_engine import MetricsEngine
-import json
+from src.llm.generator import OpenAIAnalyzer
 
-def main():
-    df = load_csv("input/data.csv")
 
-    schema = detect_schema(df)
+load_dotenv()
 
-    print("Schema:")
-    print(schema)
 
-    engine= MetricsEngine()
-    res=engine.run(df,schema)
-    with open("output/output.json", "w") as f:
-        json.dump(res, f, indent=2)
+df = pd.read_csv("input/data.csv")
 
-if __name__ == "__main__":
-    main()
+schema = detect_schema(df=df)
+
+engine = MetricsEngine()
+
+results = engine.run(df, schema)
+
+analyzer = OpenAIAnalyzer(
+    api_key=os.getenv("OPENAI_API_KEY")
+)
+
+report = analyzer.analyze(results)
+
+print(report)
