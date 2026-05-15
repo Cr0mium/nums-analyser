@@ -1,6 +1,5 @@
 # api/main.py
 
-import os
 import tempfile
 
 import pandas as pd
@@ -10,7 +9,8 @@ from dotenv import load_dotenv
 
 from src.core.detector import detect_schema
 from src.engine.metrics_engine import MetricsEngine
-from src.llm.generator import OpenAIAnalyzer
+
+from agents.graph import graph
 
 
 load_dotenv()
@@ -24,6 +24,7 @@ app = FastAPI(
 
 @app.get("/")
 def health_check():
+
     return {
         "status": "ok",
         "message": "NumInsight API running"
@@ -36,6 +37,7 @@ async def analyze_csv(
 ):
 
     if not file.filename.endswith(".csv"):
+
         raise HTTPException(
             status_code=400,
             detail="Only CSV files are supported"
@@ -50,6 +52,7 @@ async def analyze_csv(
         ) as tmp:
 
             contents = await file.read()
+
             tmp.write(contents)
 
             temp_path = tmp.name
@@ -57,13 +60,12 @@ async def analyze_csv(
         # Load dataframe
         df = pd.read_csv(temp_path)
 
-        # Schema inference
+        # Detect schema
         schema = detect_schema(
             df,
             dataset_name=file.filename
         )
-
-        # Metrics engine
+        # Compute metrics
         engine = MetricsEngine()
 
         analytics_result = engine.run(
@@ -71,28 +73,54 @@ async def analyze_csv(
             schema
         )
 
-        # LLM analysis
-        analyzer = OpenAIAnalyzer(
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
+        # Initial graph state
+        initial_state = {
 
-        report = analyzer.analyze(
-            analytics_result
-        )
+            "df_json": df.to_json(),
 
-        return {
-            "dataset": file.filename,
             "schema": {
                 "time_col": schema.time_col,
                 "numeric_cols": schema.numeric_cols,
                 "categorical_cols": schema.categorical_cols,
                 "mode": schema.mode
             },
-            "analytics": analytics_result,
-            "report": report
+
+            "mode": schema.mode,
+
+            "metrics": analytics_result,
+
+            "insights": "",
+
+            "response": "",
+
+            "error": None
+        }
+        # Run LangGraph
+        result = graph.invoke(
+            initial_state
+        )
+        return {
+
+            "dataset": file.filename,
+
+            "schema": result["schema"],
+
+            "mode": result["mode"],
+
+            "analytics": result["metrics"],
+
+            "response": result["response"],
+
+            "report": result["insights"],
+
+            "error": result["error"]
         }
 
     except Exception as e:
+
+        import traceback
+
+        traceback.print_exc()
 
         raise HTTPException(
             status_code=500,

@@ -33,7 +33,7 @@ def detect_categorical_columns(df: pd.DataFrame, threshold: int = 20) -> List[st
                 categorical_cols.append(col)
     return categorical_cols
 
-def detect_mode(self, columns: List[str]) -> str:
+def detect_mode(columns: List[str]) -> str:
     cols_lower = {col.lower() for col in columns}
     if cols_lower & PERSONAL_COLUMNS:
         return "personal"
@@ -49,12 +49,12 @@ def detect_schema(df: pd.DataFrame, dataset_name: str | None = None) -> Schema:
         numeric_cols.remove(time_col)
     if time_col in categorical_cols:
         categorical_cols.remove(time_col)
-
+    # mode=
     return Schema(
         time_col=time_col,
         numeric_cols=numeric_cols,
         categorical_cols=categorical_cols,
-        mode=detect_mode,
+        mode=detect_mode(df.columns),
         dataset_name=dataset_name
 
     )

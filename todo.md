@@ -20,9 +20,19 @@
 - [x] direction- above mean/below mean
 ## 🧪 Testing
 - [ ] Test on personal dataset
-- [ ] Test on random CSV
+- [x] Test on random CSV
 
 ## 🚀 Next Phase
-- [ ] LLM layer
-- [ ] FastAPI endpoint
-- [ ] LangGraph routing
+- [x] LLM layer
+- [x] FastAPI endpoint
+- [x] LangGraph routing
+
+## LangGraph Agent Layer
+- [ ] add Ollama client layer
+- [ ] add planner agent node
+- [ ] use LLM planning for analytics focus
+- [ ] add specialized analysis nodes
+    - trends
+    - correlations
+    - anomalies
+- [ ] allow planner to choose analysis flow

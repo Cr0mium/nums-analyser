@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 from src.core.detector import detect_schema
 from src.engine.metrics_engine import MetricsEngine
-from src.llm.generator import OpenAIAnalyzer
+from src.llm.llm_analyser import OpenAIAnalyzer
 
 
 load_dotenv()
