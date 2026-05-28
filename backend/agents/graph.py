@@ -1,12 +1,12 @@
 from langgraph.graph import StateGraph, END
 
-from agents.state import GraphState
-from agents.router import mode_router
+from backend.agents.state import GraphState
+from backend.agents.router import mode_router
 
-from agents.nodes.personal_mode import personal_mode_node
-from agents.nodes.general_mode import general_mode_node
-from agents.nodes.llm_analysis import llm_analysis_node
-from agents.nodes.planner_agent import planner_agent_node
+from backend.agents.nodes.personal_mode import personal_mode_node
+from backend.agents.nodes.general_mode import general_mode_node
+from backend.agents.nodes.llm_analysis import llm_analysis_node
+from backend.agents.nodes.planner_agent import planner_agent_node
 
 builder = StateGraph(GraphState)
 

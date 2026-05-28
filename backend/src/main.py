@@ -6,9 +6,9 @@ import pandas as pd
 
 from dotenv import load_dotenv
 
-from src.core.detector import detect_schema
-from src.engine.metrics_engine import MetricsEngine
-from src.llm.llm_analyser import OpenAIAnalyzer
+from backend.src.core.detector import detect_schema
+from backend.src.engine.metrics_engine import MetricsEngine
+from backend.src.llm.llm_analyser import OpenAIAnalyzer
 
 
 load_dotenv()

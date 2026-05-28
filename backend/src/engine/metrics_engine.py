@@ -1,11 +1,11 @@
 # src/engine/metrics_engine.py
 
-from src.metrics.basic import BasicStats
-from src.metrics.distribution import DistributionMetric
-from src.metrics.categories import CategoryMetric
-from src.metrics.correlations import CorrelationMetric
-from src.metrics.trends import TrendMetric
-from src.metrics.anomalies import AnomalyMetric
+from backend.src.metrics.basic import BasicStats
+from backend.src.metrics.distribution import DistributionMetric
+from backend.src.metrics.categories import CategoryMetric
+from backend.src.metrics.correlations import CorrelationMetric
+from backend.src.metrics.trends import TrendMetric
+from backend.src.metrics.anomalies import AnomalyMetric
 
 class MetricsEngine:
 
@@ -26,11 +26,11 @@ class MetricsEngine:
             results[name] = metric.compute(df, schema)
 
 
-        from src.utils.types import clean_dict, to_column_view
+        from backend.src.utils.types import clean_dict, to_column_view
         results = clean_dict(results)
         final_results = to_column_view(results)
 
-        from src.insights.basic_insights import generate_insights
+        from backend.src.insights.basic_insights import generate_insights
 
         final_results["insights"] = generate_insights(final_results)
         # print(results)

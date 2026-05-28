@@ -9,3 +9,4 @@ class GraphState(TypedDict):
     error: Optional[str]   # error handling
     response: str
     plan: list[str]
+    query: str

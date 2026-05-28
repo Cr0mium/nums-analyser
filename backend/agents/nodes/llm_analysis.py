@@ -2,25 +2,18 @@
 
 import os
 
-from src.llm.llm_analyser import OpenAIAnalyzer
+from backend.src.llm.llm_analyser import OpenAIAnalyzer
 
 
 def llm_analysis_node(state):
 
     try:
+        analyzer = OpenAIAnalyzer(api_key=os.getenv("OPENAI_API_KEY"))
 
-        analyzer = OpenAIAnalyzer(
-            api_key=os.getenv("OPENAI_API_KEY")
-        )
+        analytics_payload = {"metrics": state["metrics"]}
 
-        analytics_payload = {
-            "metrics": state["metrics"]
-        }
-        
         insights = analyzer.analyze(
-            analytics_payload,
-            state['plan'],
-            state['mode']
+            analytics_payload, state["plan"], state["mode"], state["query"]
         )
 
         state["insights"] = insights
@@ -28,11 +21,11 @@ def llm_analysis_node(state):
         return state
 
     except Exception as e:
-
         state["error"] = str(e)
-
+        print("[EXCEPTION]:", e)
         return state
-    
+
+
 # upate to
 #     analytics_payload = {
 #     "metrics": state["metrics"],

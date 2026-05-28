@@ -1,6 +1,8 @@
 # src/llm/ollama_client.py
 
 import requests
+
+
 class OllamaModel:
     def __init__(self):
         self.model = "gemma4:e2b"
@@ -10,8 +12,8 @@ class OllamaModel:
 
     def generate(self, prompt, max_new_tokens=200):
         try:
-            # prompt='hello, how are you?'
-            # print('[PROMPT]: ', prompt)
+            # prompt = "hello, how are you?"
+            # print("[PROMPT]: ", prompt)
             response = requests.post(
                 f"{self.addr}/api/generate",
                 json={
@@ -22,7 +24,7 @@ class OllamaModel:
                         # "num_predict": max_new_tokens,
                         "temperature": 0.0,
                         # 'think':False
-                    }
+                    },
                 },
                 timeout=120,
             )
