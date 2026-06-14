@@ -5,7 +5,7 @@ import requests
 
 class OllamaModel:
     def __init__(self):
-        self.model = "gemma4:e2b"
+        self.model = "yinw1590/gemma4-e2b-text"
         self.addr = "http://127.0.0.1:11434"
 
         print(f"[OLLAMA] Using model: {self.model} @ {self.addr}")

@@ -6,8 +6,10 @@ from typing import List, Optional
 
 @dataclass
 class Schema:
+    rows: int
+    cols: int
     time_col: Optional[str]
     numeric_cols: List[str]
     categorical_cols: List[str]
     mode: str = "general"  # personal or general
-    dataset_name: Optional[str] = None  #LLM context
+    dataset_name: Optional[str] = None  # LLM context

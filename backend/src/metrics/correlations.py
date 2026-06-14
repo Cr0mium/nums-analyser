@@ -1,15 +1,16 @@
 # src/metrics/correlations.py
 
-import pandas as pd
-from typing import List, Dict
-from .base import Metric
+from typing import Dict, List
 
+import pandas as pd
+
+from .base import Metric
 
 
 class CorrelationMetric(Metric):
     def __init__(self, threshold: float = 0.3):
         self.threshold = threshold
-    
+
     def compute(self, df: pd.DataFrame, schema) -> List[Dict]:
         def get_strength(value):
             v = abs(value)
@@ -21,6 +22,7 @@ class CorrelationMetric(Metric):
                 return "moderate"
             else:
                 return "weak"
+
         numeric_cols = schema.numeric_cols
 
         if len(numeric_cols) < 2:
@@ -41,13 +43,17 @@ class CorrelationMetric(Metric):
                 if pd.isna(value):
                     continue
 
+                if abs(value) < self.threshold:
+                    continue
                 # filter weak correlations
-                results.append({
-                    "col1": col1,
-                    "col2": col2,
-                    "value": float(round(value, 3)),
-                    "type": "positive" if value > 0 else "negative",
-                    "strength": get_strength(value),
-                })
+                results.append(
+                    {
+                        "col1": col1,
+                        "col2": col2,
+                        "value": float(round(value, 3)),
+                        "type": "positive" if value > 0 else "negative",
+                        "strength": get_strength(value),
+                    }
+                )
 
         return results

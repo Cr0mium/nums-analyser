@@ -1,14 +1,24 @@
 # src/core/detector.py
 
+from typing import List, Optional
+
 import pandas as pd
-from typing import Optional, List
+
 from .schema import Schema
 
 PERSONAL_COLUMNS = {
-    "sleep", "workout", "mood", "focus", 
-    "productivity", "calories", "steps",
-    "morning_page", "daylight", "journal"
+    "sleep",
+    "workout",
+    "mood",
+    "focus",
+    "productivity",
+    "calories",
+    "steps",
+    "morning_page",
+    "daylight",
+    "journal",
 }
+
 
 def detect_time_column(df: pd.DataFrame) -> Optional[str]:
     for col in df.columns:
@@ -33,11 +43,13 @@ def detect_categorical_columns(df: pd.DataFrame, threshold: int = 20) -> List[st
                 categorical_cols.append(col)
     return categorical_cols
 
+
 def detect_mode(columns: List[str]) -> str:
     cols_lower = {col.lower() for col in columns}
     if cols_lower & PERSONAL_COLUMNS:
         return "personal"
     return "general"
+
 
 def detect_schema(df: pd.DataFrame, dataset_name: str | None = None) -> Schema:
     time_col = detect_time_column(df)
@@ -50,12 +62,14 @@ def detect_schema(df: pd.DataFrame, dataset_name: str | None = None) -> Schema:
     if time_col in categorical_cols:
         categorical_cols.remove(time_col)
     # mode=
+    rows, cols = df.shape
+
     return Schema(
+        rows=rows,
+        cols=cols,
         time_col=time_col,
         numeric_cols=numeric_cols,
         categorical_cols=categorical_cols,
         mode=detect_mode(df.columns),
-        dataset_name=dataset_name
-
+        dataset_name=dataset_name,
     )
-

@@ -1,5 +1,6 @@
 # api/main.py
 
+import json
 import tempfile
 
 import pandas as pd
@@ -29,8 +30,9 @@ app.add_middleware(
 
 @app.get("/")
 def health_check():
-
-    return {"status": "ok", "message": "NumInsight API running"}
+    with open("backend/experiments/output.json") as f:
+        data = json.load(f)
+    return data
 
 
 @app.post("/analyze")
@@ -62,6 +64,8 @@ async def analyze_csv(file: UploadFile = File(...), query: str = Form(...)):
         initial_state = {
             "df_json": df.to_json(),
             "schema": {
+                "rows": schema.rows,
+                "columns": schema.cols,
                 "time_col": schema.time_col,
                 "numeric_cols": schema.numeric_cols,
                 "categorical_cols": schema.categorical_cols,

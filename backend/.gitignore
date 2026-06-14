@@ -1,7 +1,0 @@
-__pycache__/
-.env
-*.pyc
-output/
-input/
-experiments/
-todo.md
