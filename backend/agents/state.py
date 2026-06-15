@@ -1,12 +1,14 @@
-from typing import TypedDict, Optional
+from typing import Optional, TypedDict
+
 
 class GraphState(TypedDict):
-    df_json: str           # dataframe as json string
-    schema: dict           # schema dict
-    mode: str              # "personal" or "general"
-    metrics: dict          # computed metrics
-    insights: str          # final LLM insights
-    error: Optional[str]   # error handling
+    df_json: str  # dataframe as json string
+    schema: dict  # schema dict
+    mode: str  # "personal" or "general"
+    metrics: dict  # computed metrics
+    insights: str  # final LLM insights
+    error: Optional[str]  # error handling
     response: str
     plan: list[str]
     query: str
+    # message:

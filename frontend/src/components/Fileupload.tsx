@@ -6,6 +6,7 @@ import ReactMarkdown from "react-markdown";
 import MetricCard from "./MetricCard";
 import AnomalyTable from "./AnomalyTable";
 import DatasetProfile from "./DatasetProfile";
+import ChatBox from "./Chatbox";
 import type {
     AnalyticsResponse,
 } from "../types/types";
@@ -32,6 +33,9 @@ function FileUpload() {
 
     return (
         <div className="page-container">
+
+
+
             <h2>Upload CSV</h2>
             <div className="upload-card">
                 <input
@@ -46,13 +50,7 @@ function FileUpload() {
 
                 <br />
                 <br />
-                <textarea className="query-box"
-                    placeholder="Ask a question about your dataset..."
-                    value={query}
-                    onChange={(event) => {
-                        setQuery(event.target.value);
-                    }}
-                />
+
             </div>
 
 
@@ -131,6 +129,7 @@ function FileUpload() {
                     <CorrelationHeatmap
                         matrix={response.analytics.correlation_matrix}
                     />
+
                     <div className="section-card">
                         <SectionCard title="AI Report">
                             <div className="markdown-report">
@@ -165,6 +164,11 @@ function FileUpload() {
                         <SectionCard title="Anomalies" >
                             {topAnomalies.length === 0 ? (<p>No Anomalies found</p>) : (
                                 <AnomalyTable anomalies={topAnomalies} />)}
+
+                        </SectionCard>
+                        <SectionCard title="Chat with your Data">
+
+                            <ChatBox />
 
                         </SectionCard>
                         {/*</div>*/}

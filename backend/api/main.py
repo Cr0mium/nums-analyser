@@ -36,7 +36,7 @@ def health_check():
 
 
 @app.post("/analyze")
-async def analyze_csv(file: UploadFile = File(...), query: str = Form(...)):
+async def analyze_csv(file: UploadFile = File(...)):
 
     if not file.filename.endswith(".csv"):
         raise HTTPException(status_code=400, detail="Only CSV files are supported")
@@ -77,7 +77,7 @@ async def analyze_csv(file: UploadFile = File(...), query: str = Form(...)):
             "insights": "",
             "response": "",
             "error": None,
-            "query": query,
+            "query": "",
         }
         # Run LangGraph
         result = graph.invoke(initial_state)
