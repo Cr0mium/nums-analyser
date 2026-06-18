@@ -1,12 +1,18 @@
 import { useState, useEffect, useRef } from "react";
+import ReactMarkdown from "react-markdown";
 import "../styles/ChatBox.css";
-
+import { sendMessage } from "../services/api"
 interface Message {
     role: "user" | "assistant";
     content: string;
 }
+interface ChatBoxProps {
 
-function ChatBox() {
+    sessionId: string | null;
+
+}
+
+function ChatBox({ sessionId }: ChatBoxProps) {
     const [input, setInput] = useState<string>("");
 
     const [messages, setMessages] = useState<Message[]>([
@@ -30,7 +36,7 @@ function ChatBox() {
         });
     }, [messages, isLoading]);
 
-    function handleSend() {
+    async function handleSend() {
         if (!input.trim()) return;
 
         // Add user message
@@ -48,17 +54,22 @@ function ChatBox() {
         setIsLoading(true);
 
         // Simulate backend response
-        setTimeout(() => {
+        try {
+            const data = await sendMessage(sessionId, input);
+            // console.log(data)
             setMessages(prev => [
                 ...prev,
                 {
                     role: "assistant",
-                    content: "This is a dummy response from the AI."
-                }
+                    content: data.response,
+                },
             ]);
-
+        } catch (error) {
+            console.error(error);
+        }
+        finally {
             setIsLoading(false);
-        }, 1000);
+        }
     }
 
     return (
@@ -71,7 +82,9 @@ function ChatBox() {
                         className={`message ${message.role}`}
                         key={index}
                     >
-                        {message.content}
+                        <ReactMarkdown>
+                            {message.content}
+                        </ReactMarkdown>
                     </div>
                 ))}
 

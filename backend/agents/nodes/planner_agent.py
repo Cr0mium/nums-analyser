@@ -39,8 +39,8 @@ def planner_agent_node(state):
 
         response = ollama.generate(prompt=prompt, max_new_tokens=512)
 
-        print("[ollama_response]:")
-        print(response)
+        # print("[ollama_response]:")
+        # print(response)
 
         # Parse bullet-style output
         plan = [

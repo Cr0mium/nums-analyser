@@ -8,13 +8,11 @@ from backend.src.llm.llm_analyser import OpenAIAnalyzer
 def llm_analysis_node(state):
 
     try:
-        analyzer = OpenAIAnalyzer(api_key=os.getenv("OPENAI_API_KEY"))
+        analyzer = OpenAIAnalyzer()
 
         analytics_payload = {"metrics": state["metrics"]}
 
-        insights = analyzer.analyze(
-            analytics_payload, state["plan"], state["mode"], state["query"]
-        )
+        insights = analyzer.analyze(analytics_payload, state["plan"], state["mode"])
 
         state["insights"] = insights
 

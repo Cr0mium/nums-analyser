@@ -15,6 +15,8 @@ import CorrelationHeatmap from "./CorrelationHeatmap";
 function FileUpload() {
     const [file, setFile] = useState<File | null>(null);
 
+    const [sessionId, setSessionId] = useState<string | null>(null);
+
     const [loading, setLoading] = useState<boolean>(false);
 
     const [response, setResponse] = useState<AnalyticsResponse | null>(null);
@@ -68,11 +70,13 @@ function FileUpload() {
                     setLoading(true);
 
                     try {
-                        const data = await uploadFile(file, query);
+                        const data = await uploadFile(file);
 
                         console.log(data);
 
                         setResponse(data);
+
+                        setSessionId(data.session_id);
                     }
                     catch (error) {
                         console.error(error);
@@ -83,6 +87,7 @@ function FileUpload() {
 
                     } finally {
                         setLoading(false);
+
                     }
                 }}
             >
@@ -168,7 +173,9 @@ function FileUpload() {
                         </SectionCard>
                         <SectionCard title="Chat with your Data">
 
-                            <ChatBox />
+                            <ChatBox
+                                sessionId={sessionId}
+                            />
 
                         </SectionCard>
                         {/*</div>*/}

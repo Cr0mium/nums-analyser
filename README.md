@@ -10,36 +10,36 @@ Built using Python, FastAPI, LangGraph, OpenAI, and Ollama.
 
 This project implements an AI-driven analytics workflow with:
 
-* Automatic schema inference
-* Dataset mode detection
-* Trend analysis
-* Correlation analysis
-* Anomaly detection
-* Agentic planning using LangGraph
-* Hybrid LLM architecture (Local + Cloud)
-* Structured AI-generated reports
-* FastAPI inference service
+- Automatic schema inference
+- Dataset mode detection
+- Trend analysis
+- Correlation analysis
+- Anomaly detection
+- Agentic planning using LangGraph
+- Hybrid LLM architecture (Local + Cloud)
+- Structured AI-generated reports
+- FastAPI inference service
 
 ⸻
 
 🧩 System Architecture
 
 CSV Dataset
-    ↓
+↓
 Schema Inference
-    ↓
+↓
 Mode Detection & Routing
-    ↓
+↓
 Analytics Pipeline
- ├── Trends
- ├── Correlations
- ├── Anomalies
- └── Summary Metrics
-    ↓
+├── Trends
+├── Correlations
+├── Anomalies
+└── Summary Metrics
+↓
 Planner Agent (Ollama)
-    ↓
+↓
 LLM Report Synthesis (OpenAI)
-    ↓
+↓
 Structured Analytics Report
 
 ⸻
@@ -48,36 +48,36 @@ Structured Analytics Report
 
 🧠 Intelligent Analytics Pipeline
 
-* Automatic schema inference
-* Dataset-aware routing
-* Statistical analysis pipeline
-* Structured analytics generation
-* AI-powered insight synthesis
+- Automatic schema inference
+- Dataset-aware routing
+- Statistical analysis pipeline
+- Structured analytics generation
+- AI-powered insight synthesis
 
 ⸻
 
 📈 Trend Analysis
 
-* Rolling average trend computation
-* Percentage trend change detection
-* Time-series behavior analysis
+- Rolling average trend computation
+- Percentage trend change detection
+- Time-series behavior analysis
 
 ⸻
 
 🔗 Correlation Analysis
 
-* Pearson correlation analysis
-* Positive/negative relationship detection
-* Correlation strength classification
-* Top insight extraction
+- Pearson correlation analysis
+- Positive/negative relationship detection
+- Correlation strength classification
+- Top insight extraction
 
 ⸻
 
 🚨 Anomaly Detection
 
-* Z-score based anomaly detection
-* Outlier severity classification
-* Direction-aware anomaly tagging
+- Z-score based anomaly detection
+- Outlier severity classification
+- Direction-aware anomaly tagging
 
 ⸻
 
@@ -85,10 +85,10 @@ Structured Analytics Report
 
 Graph-based orchestration for:
 
-* routing
-* analytics execution
-* planning
-* report generation
+- routing
+- analytics execution
+- planning
+- report generation
 
 ⸻
 
@@ -98,17 +98,17 @@ Local LLMs (Ollama)
 
 Used for:
 
-* planning
-* prioritization
-* lightweight reasoning
+- planning
+- prioritization
+- lightweight reasoning
 
 Cloud LLMs (OpenAI)
 
 Used for:
 
-* structured report synthesis
-* insight generation
-* high-quality summarization
+- structured report synthesis
+- insight generation
+- high-quality summarization
 
 This hybrid setup reduces cost while preserving report quality.
 
@@ -118,20 +118,20 @@ This hybrid setup reduces cost while preserving report quality.
 
 Endpoints
 
-* /analyze → analyze uploaded CSV dataset
+- /analyze → analyze uploaded CSV dataset
 
 ⸻
 
 🛠️ Tech Stack
 
-* Python
-* FastAPI
-* Pandas
-* NumPy
-* LangGraph
-* OpenAI API
-* Ollama
-* Gemma
+- Python
+- FastAPI
+- Pandas
+- NumPy
+- LangGraph
+- OpenAI API
+- Ollama
+- Gemma
 
 ⸻
 
@@ -139,32 +139,32 @@ Endpoints
 
 .
 ├── agents/
-│   ├── graph.py
-│   ├── router.py
-│   ├── state.py
-│   └── nodes/
-│       ├── anomalies.py
-│       ├── correlations.py
-│       ├── trends.py
-│       ├── summary.py
-│       ├── planner_agent.py
-│       ├── llm_analysis.py
-│       ├── general_mode.py
-│       └── personal_mode.py
+│ ├── graph.py
+│ ├── router.py
+│ ├── state.py
+│ └── nodes/
+│ ├── anomalies.py
+│ ├── correlations.py
+│ ├── trends.py
+│ ├── summary.py
+│ ├── planner_agent.py
+│ ├── llm_analysis.py
+│ ├── general_mode.py
+│ └── personal_mode.py
 │
 ├── api/
-│   └── main.py
+│ └── main.py
 │
 ├── src/
-│   ├── core/
-│   │   └── detector.py
-│   │
-│   └── llm/
-│       ├── llm_analyser.py
-│       ├── openai_client.py
-│       ├── ollama_client.py
-│       ├── prompt_builder.py
-│       └── prompts.py
+│ ├── core/
+│ │ └── detector.py
+│ │
+│ └── llm/
+│ ├── llm_analyser.py
+│ ├── openai_client.py
+│ ├── ollama_client.py
+│ ├── prompt_builder.py
+│ └── prompts.py
 │
 └── README.md
 
@@ -229,7 +229,7 @@ http://127.0.0.1:8000
 🧪 Example API Request
 
 curl -X POST "http://127.0.0.1:8000/analyze" \
-  -F "file=@test.csv"
+ -F "file=@test.csv"
 
 ⸻
 
@@ -244,44 +244,44 @@ Detected severe low-sleep anomaly.
 
 📌 Current Capabilities
 
-* Structured analytics pipeline
-* Multi-node LangGraph orchestration
-* Local + cloud LLM integration
-* Automatic insight generation
-* AI-generated markdown reports
-* Dataset-aware routing
-* Modular agent architecture
+- Structured analytics pipeline
+- Multi-node LangGraph orchestration
+- Local + cloud LLM integration
+- Automatic insight generation
+- AI-generated markdown reports
+- Dataset-aware routing
+- Modular agent architecture
 
 ⸻
 
 ⚡ Key Learnings
 
-* Structured analytics improves LLM reasoning quality
-* Hybrid local/cloud LLM pipelines reduce operational cost
-* Planner agents improve report prioritization
-* LangGraph enables modular AI workflow orchestration
-* Statistical preprocessing significantly improves report quality
+- Structured analytics improves LLM reasoning quality
+- Hybrid local/cloud LLM pipelines reduce operational cost
+- Planner agents improve report prioritization
+- LangGraph enables modular AI workflow orchestration
+- Statistical preprocessing significantly improves report quality
 
 ⸻
 
 🔮 Future Improvements
 
-* Visualization layer
-* Interactive frontend
-* PDF report export
-* Conversational analytics
-* Multi-dataset comparison
-* Streaming analytics
-* Memory-aware workflows
+- Visualization layer
+- Interactive frontend
+- PDF report export
+- Conversational analytics
+- Multi-dataset comparison
+- Streaming analytics
+- Memory-aware workflows
 
 ⸻
 
 📌 Notes
 
-* Ollama used for local lightweight planning
-* OpenAI used for final high-quality synthesis
-* Designed for extensibility and experimentation
-* Built with modular analytics agents
+- Ollama used for local lightweight planning
+- OpenAI used for final high-quality synthesis
+- Designed for extensibility and experimentation
+- Built with modular analytics agents
 
 ⸻
 
