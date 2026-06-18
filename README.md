@@ -1,290 +1,305 @@
-🧠 AI Data Intelligence System
+# 🧠 AI Data Intelligence System
 
-An LLM-powered analytics platform that automatically analyzes CSV datasets, detects patterns, identifies anomalies, and generates structured natural-language insights.
+An LLM-powered analytics platform that transforms raw CSV datasets into structured insights through automated statistical analysis, agentic workflows, and natural language reporting.
 
-Built using Python, FastAPI, LangGraph, OpenAI, and Ollama.
+Built using **Python, FastAPI, LangGraph, OpenAI, and Ollama**.
 
-⸻
+---
 
-🚀 Overview
+# 🚀 Overview
 
-This project implements an AI-driven analytics workflow with:
+The system implements an AI-driven analytics workflow consisting of:
 
 - Automatic schema inference
-- Dataset mode detection
-- Trend analysis
-- Correlation analysis
+- Dataset classification and routing
+- Statistical trend analysis
+- Correlation discovery
 - Anomaly detection
 - Agentic planning using LangGraph
-- Hybrid LLM architecture (Local + Cloud)
-- Structured AI-generated reports
-- FastAPI inference service
+- Hybrid local + cloud LLM reasoning
+- Structured insight generation
+- Conversational analytics interface
 
-⸻
+---
 
-🧩 System Architecture
+# 🧩 System Architecture
 
+```text
 CSV Dataset
-↓
+      |
+      v
 Schema Inference
-↓
-Mode Detection & Routing
-↓
+      |
+      v
+Dataset Routing
+      |
+      v
 Analytics Pipeline
-├── Trends
-├── Correlations
-├── Anomalies
-└── Summary Metrics
-↓
+ ├── Summary Metrics
+ ├── Trend Analysis
+ ├── Correlation Analysis
+ └── Anomaly Detection
+      |
+      v
 Planner Agent (Ollama)
-↓
-LLM Report Synthesis (OpenAI)
-↓
+      |
+      v
+Report Synthesis (OpenAI)
+      |
+      v
 Structured Analytics Report
+```
 
-⸻
+---
 
-⚙️ Features
+# ⚙️ Core Features
 
-🧠 Intelligent Analytics Pipeline
+## 📊 Statistical Analytics Engine
 
-- Automatic schema inference
-- Dataset-aware routing
-- Statistical analysis pipeline
-- Structured analytics generation
-- AI-powered insight synthesis
+- Automatic dataset schema detection
+- Numerical and business-oriented data analysis
+- Structured analytics aggregation
+- Dataset-aware processing pipelines
 
-⸻
+---
 
-📈 Trend Analysis
+## 📈 Trend Analysis
 
 - Rolling average trend computation
-- Percentage trend change detection
+- Percentage growth and decline detection
 - Time-series behavior analysis
 
-⸻
+---
 
-🔗 Correlation Analysis
+## 🔗 Correlation Analysis
 
-- Pearson correlation analysis
-- Positive/negative relationship detection
+- Pearson correlation computation
+- Positive and negative relationship detection
 - Correlation strength classification
-- Top insight extraction
+- High-impact insight extraction
 
-⸻
+---
 
-🚨 Anomaly Detection
+## 🚨 Anomaly Detection
 
-- Z-score based anomaly detection
-- Outlier severity classification
-- Direction-aware anomaly tagging
+- Z-score based outlier detection
+- Severity classification
+- Direction-aware anomaly explanations
 
-⸻
+---
 
-🤖 Agentic Workflow with LangGraph
+## 🤖 Agentic Workflow with LangGraph
 
 Graph-based orchestration for:
 
-- routing
-- analytics execution
-- planning
-- report generation
+- Dataset routing
+- Analytics execution
+- Planning and prioritization
+- Report generation
 
-⸻
+---
 
-🧩 Hybrid LLM Architecture
+# 🧠 Hybrid LLM Architecture
 
-Local LLMs (Ollama)
-
-Used for:
-
-- planning
-- prioritization
-- lightweight reasoning
-
-Cloud LLMs (OpenAI)
+## Local Models (Ollama)
 
 Used for:
 
-- structured report synthesis
-- insight generation
-- high-quality summarization
+- Analytics planning
+- Finding high-priority insights
+- Lightweight reasoning
 
-This hybrid setup reduces cost while preserving report quality.
+## Cloud Models (OpenAI)
 
-⸻
+Used for:
 
-🌐 FastAPI Service
+- High-quality report synthesis
+- Natural language explanations
+- Structured business insights
 
-Endpoints
+This hybrid architecture reduces API cost while maintaining high-quality output.
 
-- /analyze → analyze uploaded CSV dataset
+---
 
-⸻
+# 🌐 API Service
 
-🛠️ Tech Stack
+## Available Endpoints
 
-- Python
-- FastAPI
-- Pandas
-- NumPy
-- LangGraph
-- OpenAI API
-- Ollama
-- Gemma
+### Analyze Dataset
 
-⸻
+```
+POST /analyze
+```
 
-📦 Project Structure
+Uploads a CSV file and returns:
 
+- Schema information
+- Statistical analytics
+- AI-generated summary report
+
+---
+
+# 🛠️ Tech Stack
+
+| Category          | Technologies      |
+| ----------------- | ----------------- |
+| Languages         | Python            |
+| Backend           | FastAPI           |
+| Data Processing   | Pandas, NumPy     |
+| LLM Orchestration | LangGraph         |
+| LLM Providers     | OpenAI, Ollama    |
+| Local Models      | Gemma             |
+| Frontend          | React, TypeScript |
+
+---
+
+# 📁 Project Structure
+
+```text
 .
-├── agents/
-│ ├── graph.py
-│ ├── router.py
-│ ├── state.py
-│ └── nodes/
-│ ├── anomalies.py
-│ ├── correlations.py
-│ ├── trends.py
-│ ├── summary.py
-│ ├── planner_agent.py
-│ ├── llm_analysis.py
-│ ├── general_mode.py
-│ └── personal_mode.py
+├── backend/
+│   ├── agents/
+│   │   ├── graph.py
+│   │   ├── router.py
+│   │   ├── state.py
+│   │   └── nodes/
+│   │       ├── trends.py
+│   │       ├── correlations.py
+│   │       ├── anomalies.py
+│   │       ├── summary.py
+│   │       ├── planner_agent.py
+│   │       └── llm_analysis.py
+│   │
+│   ├── api/
+│   │   └── main.py
+│   │
+│   ├── llm/
+│   │   ├── openai_client.py
+│   │   ├── ollama_client.py
+│   │   └── prompts.py
 │
-├── api/
-│ └── main.py
-│
-├── src/
-│ ├── core/
-│ │ └── detector.py
-│ │
-│ └── llm/
-│ ├── llm_analyser.py
-│ ├── openai_client.py
-│ ├── ollama_client.py
-│ ├── prompt_builder.py
-│ └── prompts.py
+├── frontend/
+│   ├── components/
+│   └── services/
 │
 └── README.md
+```
 
-⸻
+---
 
-⚙️ Setup
+# ⚙️ Setup
 
-1. Clone Repository
+## 1. Clone Repository
 
-git clone <your-repo-url>
-cd <repo-name>
+```bash
+git clone <your-repository-url>
+cd <repository-name>
+```
 
-⸻
+---
 
-2. Create Environment
+## 2. Create Environment
 
-conda create -n numanalyser python=3.11
-conda activate numanalyser
+```bash
+conda create -n ai-data-intelligence python=3.11
+conda activate ai-data-intelligence
+```
 
-⸻
+---
 
-3. Install Dependencies
+## 3. Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-⸻
+---
 
-4. Environment Variables
+## 4. Configure Environment Variables
 
-Create .env:
+Create a `.env` file:
 
-OPENAI_API_KEY=your_openai_key
+```env
+OPENAI_API_KEY=your_openai_api_key
+```
 
-⸻
+---
 
-🦙 Ollama Setup
+# 🦙 Ollama Setup
 
-Install Ollama:
+Install Ollama.
 
-urlOllama Official Websitehttps://ollama.com
+Pull the Gemma model:
 
-Pull model:
-
+```bash
 ollama pull gemma4:e2b
+```
 
-Run Ollama:
+Start the Ollama server:
 
+```bash
 ollama serve
+```
 
-⸻
+---
 
-🚀 Run API
+# 🚀 Running the Application
 
+## Start Backend
+
+```bash
 uvicorn api.main:app --reload
+```
 
-API runs at:
+Backend will run at:
 
+```
 http://127.0.0.1:8000
+```
 
-⸻
+---
 
-🧪 Example API Request
+## Example API Request
 
+```bash
 curl -X POST "http://127.0.0.1:8000/analyze" \
- -F "file=@test.csv"
+     -F "file=@sample_dataset.csv"
+```
 
-⸻
+---
 
-📊 Example Insights
+# 📌 Current Capabilities
 
-Screen time strongly negatively correlates with productivity.
-Calories and screen time are highly correlated.
-Workout frequency positively impacts productivity.
-Detected severe low-sleep anomaly.
+- Automated CSV analytics
+- Multi-stage LangGraph workflows
+- Hybrid local/cloud LLM pipeline
+- AI-generated analytical reports
+- Interactive conversational analytics
+- Modular and extensible architecture
 
-⸻
+---
 
-📌 Current Capabilities
+# 📚 Key Engineering Learnings
 
-- Structured analytics pipeline
-- Multi-node LangGraph orchestration
-- Local + cloud LLM integration
-- Automatic insight generation
-- AI-generated markdown reports
-- Dataset-aware routing
-- Modular agent architecture
+- Structured statistical preprocessing improves LLM reasoning accuracy
+- Separating planning from generation improves insight prioritization
+- Hybrid local/cloud architectures reduce inference cost
+- Graph-based workflows improve modularity and extensibility
+- Domain-aware prompts improve analytical quality
 
-⸻
+---
 
-⚡ Key Learnings
+# 🔮 Future Improvements
 
-- Structured analytics improves LLM reasoning quality
-- Hybrid local/cloud LLM pipelines reduce operational cost
-- Planner agents improve report prioritization
-- LangGraph enables modular AI workflow orchestration
-- Statistical preprocessing significantly improves report quality
+- PostgreSQL/SQLite session persistence
+- Conversation history and memory management
+- Advanced domain-specific routing
+- Data visualization dashboard
+- PDF report generation
+- Multi-dataset comparison
 
-⸻
+---
 
-🔮 Future Improvements
-
-- Session Presistence
-- History/continued conversations
-  ⸻
-
-📌 Notes
-
-- Ollama used for local lightweight planning
-- OpenAI used for final high-quality synthesis
-- Designed for extensibility and experimentation
-- Built with modular analytics agents
-
-⸻
-
-👨‍💻 Author
-
-Built as part of a hands-on AI systems and data intelligence engineering journey.
-
-⸻
-
-📄 License
+# 📄 License
 
 MIT License
