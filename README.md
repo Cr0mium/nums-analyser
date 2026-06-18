@@ -266,15 +266,9 @@ Detected severe low-sleep anomaly.
 
 🔮 Future Improvements
 
-- Visualization layer
-- Interactive frontend
-- PDF report export
-- Conversational analytics
-- Multi-dataset comparison
-- Streaming analytics
-- Memory-aware workflows
-
-⸻
+- Session Presistence
+- History/continued conversations
+  ⸻
 
 📌 Notes
 
